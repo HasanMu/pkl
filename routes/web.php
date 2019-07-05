@@ -12,7 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
+});
+
+Route::get('/contact', function () {
+    return view('frontend.contact');
+});
+
+Route::get('/category', function () {
+    return view('frontend.category');
+});
+
+Route::get('/blog-post', function () {
+    return view('frontend.blog-post');
 });
 
 Auth::routes();
