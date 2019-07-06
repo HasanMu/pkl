@@ -27,6 +27,10 @@ Route::get('/blog-post', function () {
     return view('frontend.blog-post');
 });
 
+Route::get('/about', function () {
+    return view('frontend.about');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

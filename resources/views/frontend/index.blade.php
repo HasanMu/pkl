@@ -39,7 +39,7 @@
 					<div class="container">
 						<!-- logo -->
 						<div class="nav-logo">
-							<a href="index.html" class="logo"><img src="{{ asset('assets/frontend/img/logo.png') }}" alt=""></a>
+							<a href="/" class="logo"><img src="{{ asset('assets/frontend/img/logo.png') }}" alt=""></a>
 						</div>
 						<!-- /logo -->
 
@@ -73,11 +73,11 @@
 					<!-- nav -->
 					<div class="section-row">
 						<ul class="nav-aside-menu">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About Us</a></li>
+							<li><a href="/">Home</a></li>
+							<li><a href="/about">About Us</a></li>
 							<li><a href="#">Join Us</a></li>
 							<li><a href="#">Advertisement</a></li>
-							<li><a href="contact.html">Contacts</a></li>
+							<li><a href="/contact">Contacts</a></li>
 						</ul>
 					</div>
 					<!-- /nav -->
@@ -673,7 +673,7 @@
 					<div class="col-md-5">
 						<div class="footer-widget">
 							<div class="footer-logo">
-								<a href="index.html" class="logo"><img src="{{ asset('assets/frontend/img/logo.png') }}" alt=""></a>
+								<a href="/" class="logo"><img src="{{ asset('assets/frontend/img/logo.png') }}" alt=""></a>
 							</div>
 							<ul class="footer-nav">
 								<li><a href="#">Privacy Policy</a></li>
@@ -693,9 +693,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								<div class="footer-widget">
 									<h3 class="footer-title">About Us</h3>
 									<ul class="footer-links">
-										<li><a href="about.html">About Us</a></li>
+										<li><a href="/about">About Us</a></li>
 										<li><a href="#">Join Us</a></li>
-										<li><a href="contact.html">Contacts</a></li>
+										<li><a href="/contact">Contacts</a></li>
 									</ul>
 								</div>
 							</div>

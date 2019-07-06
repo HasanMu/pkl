@@ -74,7 +74,7 @@
 					<div class="section-row">
 						<ul class="nav-aside-menu">
 							<li><a href="/">Home</a></li>
-							<li><a href="about">About Us</a></li>
+							<li><a href="/about">About Us</a></li>
 							<li><a href="#">Join Us</a></li>
 							<li><a href="#">Advertisement</a></li>
 							<li><a href="/contact">Contacts</a></li>
@@ -474,7 +474,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								<div class="footer-widget">
 									<h3 class="footer-title">About Us</h3>
 									<ul class="footer-links">
-										<li><a href="about">About Us</a></li>
+										<li><a href="/about">About Us</a></li>
 										<li><a href="#">Join Us</a></li>
 										<li><a href="/contact">Contacts</a></li>
 									</ul>
