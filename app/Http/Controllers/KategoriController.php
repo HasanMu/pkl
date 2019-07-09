@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Category;
+use Illuminate\Http\Request;
 use DataTables;
 
-class CategoryController extends Controller
+class KategoriController extends Controller
 {
-    public function __constract()
+
+    public function __construct()
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -27,9 +27,8 @@ class CategoryController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
 
-                           $btn = '<a href="javascript:void(0)" class="edit btn btn-info"><i class="fa fa-info"></i></a>';
-                           $btn = $btn.' <a href="javascript:void(0)" class="edit btn btn-warning"><i class="fa fa-edit"></i></a>';
-                           $btn = $btn.' <a href="javascript:void(0)" class="edit btn btn-danger"><i class="fa fa-trash-o"></i></a>';
+                           $btn = ' <button class="edit btn btn-info"><i class="fa fa-edit"></i></button>';
+                           $btn = $btn.' <button class="hapus-kategori btn btn-danger popup-hapus" data-toggle="modal" data-target="#delete" data-id="'.$row->id.'" data-nama="'.$row->nama.'"><i class="fa fa-trash-o"></i></button>';
                             return $btn;
                     })
                     ->rawColumns(['action'])
@@ -76,7 +75,7 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -87,7 +86,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -99,7 +98,7 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -110,11 +109,19 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $data = Category::findOrFail($id)->delete();
+
+        $response = [
+            'success'   =>  true,
+            'data'      =>  $data,
+            'message'   =>  'berhasil dihapus'
+        ];
+
+        return response()->json($response, 200);
     }
 }

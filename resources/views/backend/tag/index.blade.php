@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-@include('backend.kategori.modal')
+@include('backend.tag.modal')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Data Kategori</div>
+                <div class="card-header">Data Tag</div>
 
                 <div class="card-body">
-                    <div id="body-category"></div>
-                        <input class="form-control inputKategori" type="text" name="inputKategori">
+                    <div id="body-tag"></div>
+                        <input class="form-control inputTag" type="text" name="inputTag">
                     <p></p>
-                    <button type="button" class="btn btn-success tambah">Tambah</button>
+                    <button type="button" class="btn btn-success tambah-tag">Tambah</button>
                 <p></p>
                     <table class="table dataTable">
                         <thead>
@@ -21,7 +21,7 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody class="data-kategori">
+                        <tbody class="data-tag">
                         </tbody>
                     </table>
                 </div>

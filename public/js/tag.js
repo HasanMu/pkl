@@ -6,7 +6,7 @@ $(document).ready(function (){
         }
     });
 
-    var alamat = "http://forum-prakerin.test/api/category";
+    var alamat = "http://forum-prakerin.test/api/tag";
     var nama = $('input[name="nama"]').val();
     var id = $('input[id="id"]').val();
 
@@ -17,13 +17,13 @@ $(document).ready(function (){
         success: function (berhasil) {
             console.log(berhasil)
             $.each(berhasil.data, function(key, val) {
-                $('.data-kategori').append(
+                $('.data-tag').append(
                     `
                     <tr>
                         <td>${val.nama}</td>
                         <td>
-                            <button type="button" class="btn btn-primary e-kategori"  data-id="${val.id}"  data-toggle="modal" data-target="#ubah-kategori" data-nama="${val.nama}">Edit</button>
-                            <button type="button" class="btn btn-danger h-kategori" data-id="${val.id}">Hapus</button>
+                            <button type="button" class="btn btn-primary e-tag"  data-id="${val.id}"  data-toggle="modal" data-target="#ubah-tag" data-nama="${val.nama}">Edit</button>
+                            <button type="button" class="btn btn-danger h-tag" data-id="${val.id}">Hapus</button>
                         </td>
                     </tr>
                     `
@@ -32,10 +32,10 @@ $(document).ready(function (){
         }
     })
 
-    $('.tambah').on('click', function(e) {
+    $('.tambah-tag').on('click', function(e) {
         e.preventDefault()
 
-        var input = $('input[name="inputKategori"]').val()
+        var input = $('input[name="inputTag"]').val()
 
         $.ajax({
             url: alamat,
@@ -45,7 +45,7 @@ $(document).ready(function (){
                 nama: input
             },
             success: function (data) {
-                $('.inputKategori').val('');
+                $('.inputTag').val('');
                 location.reload();
                 console.log(data.message);
             },
@@ -56,7 +56,7 @@ $(document).ready(function (){
         });
     });
 
-    $('.data-kategori').on('click', '.h-kategori', function(){
+    $('.data-tag').on('click', '.h-tag', function(){
         var id = $(this).data('id')
 
         $.ajax({
@@ -78,7 +78,7 @@ $(document).ready(function (){
     });
 
 
-    $('#ubah-kategori').on('show.bs.modal', function (event) {
+    $('#ubah-tag').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
         var nama = button.data('nama')
         var id = button.data('id') // Extract info from data-* attributes
@@ -86,14 +86,14 @@ $(document).ready(function (){
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
         var modal = $(this)
         modal.find('.modal-body input[name="id"]').val(id)
-        modal.find('.modal-body input[name="ubahKategori"]').val(nama)
+        modal.find('.modal-body input[name="ubahtag"]').val(nama)
     })
 
-    $('.ubah-category').on('click', function(e) {
+    $('.ubah-tagg').on('click', function(e) {
         e.preventDefault();
 
         var id = $('input[name="id"]').val()
-        var nama = $('input[name="ubahKategori"]').val()
+        var nama = $('input[name="ubahtag"]').val()
 
         $.ajax({
             url: alamat + '/'+id,

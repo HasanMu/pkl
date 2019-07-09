@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -33,7 +33,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('kategori.index') }}">{{ __('Kategori') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('tag.index') }}">{{ __('Tag') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -76,5 +81,21 @@
             @yield('content')
         </main>
     </div>
+    <script src="{{ asset('js/kategori.js') }}"></script>
+    <script src="{{ asset('js/tag.js') }}"></script>
+    {{-- <script type="text/javascript">
+        $(function () {
+            var $table = $('.dataTable').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('kategori.index') }}",
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'nama', name: 'nama'},
+                    {data: 'action', name: 'action', orderalbe: false, searchable: false}
+                ]
+            });
+        });
+    </script> --}}
 </body>
 </html>

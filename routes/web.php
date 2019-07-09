@@ -34,6 +34,5 @@ Route::get('/about', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/admin/category', 'CategoryController')->only([
-    'create', 'edit', 'show', 'index', 'store'
-]);
+Route::resource('/admin/kategori', 'KategoriController');
+Route::resource('/admin/tag', 'TaggController');
