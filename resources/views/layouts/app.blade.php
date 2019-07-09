@@ -39,6 +39,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('tag.index') }}">{{ __('Tag') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('artikel.index') }}">{{ __('Artikel') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -83,6 +86,7 @@
     </div>
     <script src="{{ asset('js/kategori.js') }}"></script>
     <script src="{{ asset('js/tag.js') }}"></script>
+    <script src="{{ asset('js/artikel.js') }}"></script>
     {{-- <script type="text/javascript">
         $(function () {
             var $table = $('.dataTable').DataTable({

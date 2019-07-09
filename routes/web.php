@@ -36,3 +36,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/admin/kategori', 'KategoriController');
 Route::resource('/admin/tag', 'TaggController');
+Route::resource('/admin/artikel', 'ArtikellController');
