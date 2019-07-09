@@ -1,18 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-@include('backend.tag.modal')
+@include('backend.artikel.modal')
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Data Tag</div>
+                <div class="card-header">Data Artikel</div>
 
                 <div class="card-body">
-                    <div id="body-artikel"></div>
-                        <input class="form-control inputTag" type="text" name="inputTag">
-                    <p></p>
-                    <button type="button" class="btn btn-success tambah-artikel">Tambah</button>
+                    <button type="button" class="btn btn-success tambah-artikel" data-toggle="modal" data-target="#create-artikel">Tambah</button>
                 <p></p>
                     <table class="table dataTable">
                         <thead>
