@@ -6,7 +6,7 @@ $(document).ready(function (){
         }
     });
 
-    var alamat = "http://forum-prakerin.test/api/category";
+    var alamat = "http://forumpkl.herokuapp.com/api/category";
     var nama = $('input[name="nama"]').val();
     var id = $('input[id="id"]').val();
 
