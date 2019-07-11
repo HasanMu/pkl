@@ -22,14 +22,28 @@ $(document).ready(function () {
                     `
                     <tr>
                         <td>${val.judul}</td>
+                        <td>
+                            <img src="/assets/backend/artikel/img/${val.foto}" width="150px" height="100px">
+                        </td>
                         <td>${val.user.name}</td>
-                        <td>
-                            <img src="/assets/backend/artikel/img/${val.foto}" width="200px" height="200px"></td>
                         <td>${val.category.nama}</td>
-                        <td>${val.tag.nama}</td>
+                        <td>${val.tag[0].nama}</td>
                         <td>
-                            <button type="button" class="btn btn-primary e-kategori"  data-id="${val.id}"  data-toggle="modal" data-target="#ubah-kategori" data-nama="${val.nama}">Edit</button>
-                            <button type="button" class="btn btn-danger h-kategori" data-id="${val.id}">Hapus</button>
+                            <button
+                                type="button"
+                                class="btn btn-primary e-artikel"
+                                data-toggle="modal"
+                                data-target="#edit-artikel"
+                                data-id="${val.id}"
+                                data-judul="${val.judul}"
+                                data-konten="${val.konten}"
+                                data-foto="${val.foto}"
+                                data-kategori="${val.category.nama}"
+                                data-tag="${val.tag[0].nama}">Edit</button>
+                            <button
+                                type="button"
+                                class="btn btn-danger h-artikel"
+                                data-id="${val.id}">Hapus</button>
                         </td>
                     </tr>
                     `
@@ -83,12 +97,14 @@ $(document).ready(function () {
     $('#form-create-artikel').on('submit', function (e) {
         e.preventDefault();
 
+        var tag = $('.tag option:selected').attr('value');
+
         formData.append('foto', $('input[type="file"]')[0].files[0])
         formData.append('judul', $('.judul').val());
         formData.append('konten', $('.konten').val());
         // formData.append('', $('.foto').val());
         formData.append('kategori',  $('.kategori option:selected').attr('value'));
-        formData.append('tag', $('.tag option:selected').attr('value'));
+        formData.append('tag', [tag]);
 
         $.ajax({
             url: alamat,
@@ -106,7 +122,46 @@ $(document).ready(function () {
 
             }
         })
-
-
     })
+
+    $('.data-artikel').on('click', '.e-artikel', function() {
+
+        var id = $(this).data('id')
+        var judul = $(this).data('judul')
+        var konten = $(this).data('konten')
+        var foto = $(this).data('foto')
+        var kategori = $(this).data('kategori')
+        var tag = $(this).data('tag')
+
+        $('.e-judul').val(judul)
+        $('.e-konten').val(konten)
+        $('.prev-foto').attr('src', '/assets/backend/artikel/img/'+foto)
+
+        $.ajax({
+            url: '/api/category',
+            method: "GET",
+
+        })
+    })
+
+    $('.data-artikel').on('click', '.h-artikel', function(){
+        var id = $(this).data('id')
+
+        $.ajax({
+            url: alamat+'/'+id,
+            method: "DELETE",
+            dataType: "json",
+            data: {
+                id: id
+            },
+            success: function (succ) {
+                location.reload();
+                console.log(succ.messsage)
+            },
+            error: function (err) {
+                console.log(err);
+
+            }
+        })
+    });
 })

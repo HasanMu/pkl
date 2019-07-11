@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Artikel;
 use Auth;
+use File;
+use App\Tag;
 
 class ArtikelController extends Controller
 {
@@ -22,7 +24,6 @@ class ArtikelController extends Controller
         $response = [
             'success'   =>  true,
             'data'      =>  $data,
-            'count'     =>  $count,
             'message'   =>  'berhasil ditampilkan'
         ];
 
