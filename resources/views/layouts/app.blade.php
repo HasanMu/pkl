@@ -86,6 +86,8 @@
             @yield('content')
         </main>
     </div>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
     <script src="{{ asset('js/kategori.js') }}"></script>
     <script src="{{ asset('js/tag.js') }}"></script>
     <script src="{{ asset('js/artikel.js') }}"></script>
