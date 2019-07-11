@@ -20,6 +20,6 @@ class Artikel extends Model
 
     public function tag()
     {
-        return $this->belongsToMany('App\Tag', 'artikels_tag', 'artikel_id', 'tag_id');
+        return $this->belongsToMany('App\Tag', 'artikels_tags', 'artikel_id', 'tag_id');
     }
 }

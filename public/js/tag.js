@@ -6,7 +6,7 @@ $(document).ready(function (){
         }
     });
 
-    var alamat = "http://forumpkl.herokuapp.com/api/tag";
+    var alamat = "/api/tag";
     var nama = $('input[name="nama"]').val();
     var id = $('input[id="id"]').val();
 
@@ -51,7 +51,7 @@ $(document).ready(function (){
             },
             error: function (err) {
                 console.log(err);
-                
+
             }
         });
     });
@@ -72,7 +72,7 @@ $(document).ready(function (){
             },
             error: function (err) {
                 console.log(err);
-                
+
             }
         })
     });

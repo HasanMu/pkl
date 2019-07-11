@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Artikel;
+use Auth;
 
 class ArtikelController extends Controller
 {
@@ -15,7 +16,7 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        $data = Artikel::orderBy('created_at', 'desc');
+        $data = Artikel::with('category', 'user', 'tag')->orderBy('created_at', 'desc')->get();
         $count = Artikel::all();
 
         $response = [
@@ -51,8 +52,9 @@ class ArtikelController extends Controller
         $data->judul = $request->judul;
         $data->slug = str_slug($request->judul);
         $data->konten = $request->konten;
-        $data->user_id = Auth::user()->id;
-        $data->category_id = $request->category;
+        $data->user_id = 1;;
+        $data->category_id = $request->kategori;
+        $data->views = 1;
         # Foto
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
