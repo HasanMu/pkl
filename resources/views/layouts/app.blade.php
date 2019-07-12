@@ -92,6 +92,7 @@
     <script src="{{ asset('js/kategori.js') }}"></script>
     <script src="{{ asset('js/tag.js') }}"></script>
     <script src="{{ asset('js/artikel.js') }}"></script>
+    <script src="{{ asset('assets/backend/ckeditor/ckeditor.js') }}"></script>
     @stack('js')
     {{-- <script type="text/javascript">
         $(function () {

@@ -53,7 +53,7 @@ class ArtikelController extends Controller
         $data->judul = $request->judul;
         $data->slug = str_slug($request->judul);
         $data->konten = $request->konten;
-        $data->user_id = 1;;
+        $data->user_id = $request->id;;
         $data->category_id = $request->kategori;
         $data->views = 1;
         # Foto

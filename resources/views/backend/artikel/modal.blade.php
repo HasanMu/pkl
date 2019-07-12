@@ -10,13 +10,14 @@
                         </button>
                 </div>
                 <div class="modal-body">
+                <input class="form-control judul" type="hidden" name="id" value="{{ Auth::user()->id }}">
                     <div class="form-group">
                         <label for="my-input">judul</label>
                         <input id="my-input" class="form-control judul" type="text" name="judul">
                     </div>
                     <div class="form-group">
                         <label for="my-textarea">Konten</label>
-                        <textarea id="my-textarea" class="form-control konten" name="konten" rows="4"></textarea>
+                        <textarea id="ckeditor" class="form-control konten" name="konten" rows="4"></textarea>
                     </div>
                     <div class="form-group">
                     <label for="foto">Foto</label>
@@ -60,7 +61,7 @@
                     </div>
                     <div class="form-group">
                         <label for="my-textarea">Konten</label>
-                        <textarea id="my-textarea" class="form-control e-konten" name="konten" rows="4"></textarea>
+                        <textarea id="ckeditor" class="form-control e-konten" name="konten" rows="4"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="foto">Foto</label>

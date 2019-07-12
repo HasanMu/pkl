@@ -73,4 +73,7 @@
         })
     })
 </script>
+<script>
+    CKEDITOR.replace('ckeditor')
+</script>
 @endpush
