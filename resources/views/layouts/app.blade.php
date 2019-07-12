@@ -16,6 +16,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -91,6 +92,7 @@
     <script src="{{ asset('js/kategori.js') }}"></script>
     <script src="{{ asset('js/tag.js') }}"></script>
     <script src="{{ asset('js/artikel.js') }}"></script>
+    @stack('js')
     {{-- <script type="text/javascript">
         $(function () {
             var $table = $('.dataTable').DataTable({

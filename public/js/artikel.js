@@ -53,38 +53,8 @@ $(document).ready(function () {
     //     }
     // });
 
-    $('.dataTable').dataTable({
-        dataType: 'json',
-        ajax: alamat,
-        responsive: true,
-        columns: [
-            {data: 'judul', name: 'judul'},
-            { data: 'foto', render :  function(foto){
-                    return '<img src="/assets/backend/artikel/img/'+foto+'" style="width:150px; height:100px;" alt="foto">';
-                }
-            },
-            {data: 'user.name', name: 'user.name'},
-            {data: 'category.nama', name: 'category.nama'},
-            {data: 'tag[].nama', render: function(nama) {
-                    return `${nama}`
-                }
-            },
-            {data: 'id', render: function (id) {
-                return `<button
-                                 type="button"
-                                 class="btn btn-primary e-artikel"
-                                 data-toggle="modal"
-                                 data-target="#edit-artikel"
-                                 onclick="${editArtikel(id)}">Edit</button>
-                             <button
-                                 type="button"
-                                 class="btn btn-danger h-artikel"
-                                 data-id="${id}">Hapus</button>`
-            }}
-        ]
-    })
 
-
+    // Get Data Kategori & Tag
     $('.tambah-artikel').on('click', function (e) {
         e.preventDefault();
 
@@ -124,8 +94,9 @@ $(document).ready(function () {
             }
         });
     })
+    // Get Data Kategori & Tag
 
-
+    // POST Artikel
     $('#form-create-artikel').on('submit', function (e) {
         var formData = new FormData($('#form-create-artikel')[0]);
         e.preventDefault();
@@ -146,6 +117,7 @@ $(document).ready(function () {
             data: formData,
             contentType: false,
             processData: false,
+            cache: false,
             success: function (res) {
                 console.log(res.message);
                 location.reload();
@@ -157,26 +129,30 @@ $(document).ready(function () {
         })
     })
 
-    // $('.data-artikel').on('click', '.e-artikel', function() {
+    // Edit Artikel
+    $('.data-artikel').on('click', '.e-artikel', function(e) {
+        e.preventDefault();
 
-    //     var id = $(this).data('id')
-    //     var judul = $(this).data('judul')
-    //     var konten = $(this).data('konten')
-    //     var foto = $(this).data('foto')
-    //     var kategori = $(this).data('kategori')
-    //     var tag = $(this).data('tag')
+        var id = $(this).data('id')
+        var judul = $('.e-judul')
 
-    //     $('.e-judul').val(judul)
-    //     $('.e-konten').val(konten)
-    //     $('.prev-foto').attr('src', '/assets/backend/artikel/img/'+foto)
+        $.ajax({
+            url: alamat+'/'+id,
+            method: "GET",
+            dataType: "JSON",
+            success: function (res) {
+                $('.modal-body .e-judul').val(res.data.judul);
+                $('.modal-body .e-konten').val(res.data.konten);
+                $('.modal-body .e-prev-foto').val(res.data.foto);
 
-    //     $.ajax({
-    //         url: '/api/category',
-    //         method: "GET",
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    })
 
-    //     })
-    // })
-
+    // Hapus Artikel
     $('.data-artikel').on('click', '.h-artikel', function(){
         var id = $(this).data('id')
 
@@ -197,19 +173,4 @@ $(document).ready(function () {
             }
         })
     });
-
-    function editArtikel(id) {
-
-        var id;
-
-        $.ajax({
-            url: alamat+'/'+id,
-            method: 'GET',
-            dataType: 'json',
-            success: function (res) {
-                console.log(res);
-            }
-        })
-
-    }
 })

@@ -84,14 +84,11 @@ class ArtikelController extends Controller
     public function show($id)
     {
         $data = Artikel::findOrFail($id);
-        $views = new Artikel;
-        $views->views = $data->views + 1;
-        $views->save();
 
         $response = [
             'success'   =>  true,
             'data'      =>  $data,
-            'message'   =>  'berhasil ditampilkan'
+            'message'   =>  'berhasil ditampilkan'.$data->judul
         ];
 
         return response()->json($response, 200);

@@ -65,7 +65,7 @@
                     <div class="form-group">
                         <label for="foto">Foto</label>
                         <input type="file" class="form-control-file e-foto" name="foto" id="foto" placeholder="" aria-describedby="foto">
-                        <img src="/assets/backend/artikel/img/" class="prev-foto" width="150px" height="150px">
+                        <img src="/assets/backend/artikel/img/" class="e-prev-foto" width="150px" height="150px">
                     </div>
                     <div class="form-group">
                         <label for="kategori">Kategori</label>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary ubah-artikel">Save</button>
+                    <button type="button" class="btn btn-primary ubah-artikel">Save</button>
                 </div>
             </form>
         </div>
